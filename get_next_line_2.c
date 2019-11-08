@@ -6,7 +6,7 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/08 14:48:12 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/08 17:48:56 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/08 18:35:15 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -83,15 +83,20 @@ int		get_next_line_2(int fd, char **line)
 			{
 				if (buf[j] == '\0')
 				{
+					printf("BUF = %s\n", buf);
 					stock = ft_strjoin(stock, buf);
 					printf("STOCK = %s\n", stock);
 				}
 				if (buf[j] == '\n')
 				{
+					printf("BUF = %s\n", buf);
+					stock = ft_strjoin(stock, buf);
 					line[i] = ft_strdup(stock);
+					j = BUFFER_SIZE;
 					printf("LINE = %s\n", line[i]);
 					free(stock);
 					stock = ft_calloc(1, 1);
+					printf("STOCK FREE = %s\n", stock);
 					i++;
 				}
 				j++;
