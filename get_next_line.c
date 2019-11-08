@@ -6,7 +6,7 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 10:29:04 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 17:24:32 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/08 15:06:29 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,35 +24,56 @@ int		get_next_line(int fd, char **line)
 	int ret;
 	static char buf[BUFFER_SIZE + 1];
 	int i;
-	int count;
+	int j;
+	int countline;
+	char *stock;
 
+	countline = 1;
 	i = 0;
-	count = 0;
+	j = 0;
+	stock = ft_calloc(1, 1);
 	if (fd == -1)
 		return(-1);
 	printf("fd = %d\n", fd);
+	line = (char **)malloc(sizeof(char*) * (1));
+	printf("BUFFER_SIZE = %d\n ", BUFFER_SIZE);
 	while ((ret = read(fd, buf, BUFFER_SIZE)))
 	{
 		buf[ret] = '\0';
-		printf("ret = %d et ", ret);
-		printf("buf = %s\n", buf);
-		line[i] = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		line[i] = ft_strdup(buf);
-		i++;
+		while (j != BUFFER_SIZE + 1)
+		{
+			if (buf[j] == '\0')
+			{
+				printf("[IN1]\n");
+				printf("BUF = %s\n", buf);
+				stock = ft_strjoin(stock, buf);
+				printf("STOCK = %s\n", stock);
+				printf("[OUT1]\n");
+			}
+			if (buf[j] == '\n')
+			{
+				printf("[IN2]\n");
+				line[i] = ft_strdup(stock);
+//				line[i] = stock;
+//				line[i][ft_strlen(line[i])] = '\0';
+				printf("LINE%d = %s\n", countline, line[i]);
+				countline++;
+				stock = ft_calloc(1, 1);
+				i++;
+				printf("[OUT2]\n");
+			}
+			j++;
+		}
+		j = 0;
 	}
-	i = 0;
-	while (line[i])
-	{
-		printf("%s", line[i]);
-		i++;
-	}
-	while (i != 0)
+/*	while (i != 0)
 	{
 		free(line[i]);
 		i--;
 	}
 	free (line[i]);
-	return (ret);
+	return (ret);*/
+	return (0);
 }
 
 int		main(int argc, char **argv)
