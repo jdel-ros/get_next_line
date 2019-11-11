@@ -19,26 +19,6 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-char	*ft_splitbuf(char *buf)
-{
-	int i;
-	int j;
-	char *str;
-
-	i = 0;
-	j = 0;
-	while (buf[i] != '\n')
-		i++;
-	str = (char *)malloc(sizeof(char) + i);
-	while (buf[j] != '\n')
-	{
-		str[j] = buf[j];
-		j++;
-	}
-	printf("str = %s\n", str);
-	return (str);
-}
-
 int		checkstock(char *str)
 {
 	int i;
