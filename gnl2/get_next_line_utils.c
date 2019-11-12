@@ -6,19 +6,19 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:07:37 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/08 16:08:01 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/12 18:00:06 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "get_next_line_2.h"
+#include "get_next_line.h"
 
 int				ft_strlen(char *str)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
 		i++;
 	return (i);
 }
@@ -31,7 +31,7 @@ char			*ft_strjoin(char *s1, char *s2)
 	int			len;
 
 	len = ft_strlen(s1) + ft_strlen(s2);
-	if (!(str = (char *)malloc(sizeof(char) * len + 1)))
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -39,6 +39,7 @@ char			*ft_strjoin(char *s1, char *s2)
 	{
 		str[j++] = s1[i++];
 	}
+	free (s1);
 	i = 0;
 	while (s2[i])
 	{
@@ -48,19 +49,54 @@ char			*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_strdup(char *str, int i)
+char	*ft_strdup(char *str)
 {
 	int		j;
+	int		i;
 	char	*dup;
 
-	if (!(dup = (char*)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	j = 0;
-	while (j < i)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		dup[j] = str[j];
-		j++;
+		if (str[i] == '\n')
+		{
+			if (!(dup = (char*)malloc(sizeof(char) * (i + 1))))
+				return (NULL);
+			j =	0;
+			while (j < i)
+			{
+				dup[j] = str[j];
+				j++;
+			}
+			dup[j] = '\0';
+			return (dup);
+		}
+		i++;
 	}
-	dup[j] = '\0';
+	if (!(dup = (char*)malloc(sizeof(char) * 1)))
+		return (NULL);
+	dup[0] = '\0';
 	return (dup);
+}
+
+char		*ft_strrchr(char *s, char c)
+{
+	int			i;
+	char		*res;
+
+	res = ft_strdup("");
+	i = 0;
+	while (s[i])
+	{
+		i++;
+		if (s[i] == c)
+		{
+			res = ft_strjoin(res, s + (i + 1));
+			free(s);
+			return (res);
+		}
+		if (s[i] == '\0')
+			return (res);
+	}
+	return (0);
 }
