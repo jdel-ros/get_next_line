@@ -6,7 +6,7 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:07:37 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 13:34:04 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 15:37:47 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,10 +28,9 @@ char			*ft_strjoin(char *s1, char *s2)
 	char		*str;
 	int			i;
 	int			j;
-	int			len;
 
-	len = ft_strlen(s1) + ft_strlen(s2);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2))
+						+ 1))))
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -73,16 +72,25 @@ char			*ft_strdup(char *str)
 		}
 		i++;
 	}
+	return (0);
 }
 
-char			*ft_strdup
+char			*ft_strdupnul(void)
+{
+	char *dup;
+
+	if (!(dup = (char *)malloc(sizeof(char) * 1)))
+		return (NULL);
+	dup[0] = '\0';
+	return (dup);
+}
 
 char			*ft_strrchr(char *s, char c)
 {
 	int			i;
 	char		*res;
 
-	res = ft_strdup("");
+	res = ft_strdupnul();
 	i = 0;
 	while (s[i])
 	{

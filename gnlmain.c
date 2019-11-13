@@ -6,7 +6,7 @@
 /*   By: lelegros <lelegros@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/28 15:16:51 by lelegros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 13:21:48 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 15:53:36 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,6 +49,7 @@ int        main(int ac, char **av)
         write(1, "\n", 1);
         j++;
         free(line);
+		printf("%d\n", ret);
     }
     i = 0;
 if (line && line[i])
@@ -64,5 +65,6 @@ if (line && line[i])
 else
     free(line);
     dprintf(1, "LIGNES LUES = %d\n", j);
+	printf("%d\n", ret);
     return (0);
 }
