@@ -6,12 +6,13 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:08:12 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/12 17:57:22 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 13:00:46 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
-#ifndef GET_NEXT_LINE_2_H
-# define GET_NEXT_LINE_2_H
+
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # include <sys/types.h>
 # include <sys/stat.h>

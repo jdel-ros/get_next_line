@@ -6,7 +6,7 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:07:37 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 11:32:22 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 13:34:04 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,11 +73,9 @@ char			*ft_strdup(char *str)
 		}
 		i++;
 	}
-	if (!(dup = (char*)malloc(sizeof(char) * 1)))
-		return (NULL);
-	dup[0] = '\0';
-	return (dup);
 }
+
+char			*ft_strdup
 
 char			*ft_strrchr(char *s, char c)
 {
@@ -88,7 +86,6 @@ char			*ft_strrchr(char *s, char c)
 	i = 0;
 	while (s[i])
 	{
-		i++;
 		if (s[i] == c)
 		{
 			res = ft_strjoin(res, s + (i + 1));
@@ -97,6 +94,7 @@ char			*ft_strrchr(char *s, char c)
 		}
 		if (s[i] == '\0')
 			return (res);
+		i++;
 	}
 	return (0);
 }

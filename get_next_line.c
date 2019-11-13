@@ -6,7 +6,7 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/11 12:14:31 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 11:12:49 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/13 13:34:06 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,17 +38,15 @@ char		*read_line(char *str, int fd)
 
 int			get_next_line(int fd, char **line)
 {
-	int			i;
-	static char	*str;
+	int				i;
+	static char		*str;
 
 	i = 0;
 	if (fd == -1)
 		return (-1);
 	*line = ft_strdup("");
 	if (str != NULL)
-	{
 		str = ft_strrchr(str, '\n');
-	}
 	if (str == NULL)
 		str = ft_strdup("");
 	str = read_line(str, fd);
