@@ -6,7 +6,7 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:08:12 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 14:01:02 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 15:29:08 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,15 +18,12 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <stdlib.h>
-# include <stdio.h>
 
 int			get_next_line(int fd, char **line);
 int			ft_strlen(char *str);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strdup(char *str);
-char		*ft_strdupnul(void);
-char		*ft_strrchr(char *s, char c);
+char		*ft_strdupclas(char *str);
+char		*ft_strchrcut(char *s, char c);
 #endif

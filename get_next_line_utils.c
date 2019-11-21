@@ -6,12 +6,13 @@
 /*   By: jdel-ros <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/11/07 12:07:37 by jdel-ros     #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/13 15:37:47 by jdel-ros    ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/21 15:30:18 by jdel-ros    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 int				ft_strlen(char *str)
 {
@@ -28,9 +29,10 @@ char			*ft_strjoin(char *s1, char *s2)
 	char		*str;
 	int			i;
 	int			j;
+	int			len;
 
-	if (!(str = (char *)malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2))
-						+ 1))))
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -46,6 +48,23 @@ char			*ft_strjoin(char *s1, char *s2)
 	}
 	str[j] = '\0';
 	return (str);
+}
+
+char			*ft_strdupclas(char *str)
+{
+	int		i;
+	char	*dup;
+
+	i = 0;
+	if (!(dup = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1))))
+		return (NULL);
+	while (str[i] != '\0')
+	{
+		dup[i] = str[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }
 
 char			*ft_strdup(char *str)
@@ -72,25 +91,15 @@ char			*ft_strdup(char *str)
 		}
 		i++;
 	}
-	return (0);
+	return (ft_strdupclas(str));
 }
 
-char			*ft_strdupnul(void)
-{
-	char *dup;
-
-	if (!(dup = (char *)malloc(sizeof(char) * 1)))
-		return (NULL);
-	dup[0] = '\0';
-	return (dup);
-}
-
-char			*ft_strrchr(char *s, char c)
+char			*ft_strchrcut(char *s, char c)
 {
 	int			i;
 	char		*res;
 
-	res = ft_strdupnul();
+	res = ft_strdupclas("");
 	i = 0;
 	while (s[i])
 	{
@@ -100,8 +109,6 @@ char			*ft_strrchr(char *s, char c)
 			free(s);
 			return (res);
 		}
-		if (s[i] == '\0')
-			return (res);
 		i++;
 	}
 	return (0);
